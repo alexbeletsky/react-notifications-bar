@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/alexbeletsky/react-notifications-bar/issues"
   },
-  "homepage": "https://github.com/alexbeletsky/react-notifications-bar"
+  "homepage": "https://github.com/alexbeletsky/react-notifications-bar",
+  "dependencies": {
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "babelify": "^5.0.3"
+  }
 }
