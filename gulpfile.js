@@ -17,7 +17,7 @@ gulp.task('build', function(done) {
 
 gulp.task('module', function (done) {
   gulp.src('src/notificationsBar.js')
-    .pipe(esperanto({type: 'amd', name: 'NotificationsBar', strict: true}))
+    .pipe(esperanto({type: 'umd', name: 'NotificationsBar', strict: true}))
     .pipe(gulp.dest('dist'));
 });
 
