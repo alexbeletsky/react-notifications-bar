@@ -1,6 +1,6 @@
 import React from 'react';
 
-let NotificationsBar = React.createClass({
+var NotificationsBar = React.createClass({
 	render: function () {
 		return (
 			<div></div>

@@ -52,11 +52,12 @@
     "isparta": "^2.0.0",
     "jshint-stylish": "^1.0.0",
     "mkdirp": "^0.5.0",
+    "plumber": "^0.4.8",
     "run-sequence": "^1.0.2",
     "vinyl-source-stream": "^1.0.0"
   },
   "babelBoilerplateOptions": {
-    "entryFileName": "src/reactNotificationsBar.js",
+    "entryFileName": "reactNotificationsBar.js",
     "exportVarName": "NotificationsBar"
   }
 }
