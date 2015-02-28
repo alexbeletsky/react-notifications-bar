@@ -1,11 +1,8 @@
-// import React from 'react';
+import React from 'react';
 
-// var NotificationsBar = React.createClass({
-// 	render: function () {
-// 		return (
-// 			<div></div>
-// 		);
-// 	}
-// });
+var NotificationsBar = React.createClass({
+	render: function () {
+	}
+});
 
-// export default NotificationsBar;
+export default NotificationsBar;
