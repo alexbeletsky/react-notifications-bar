@@ -1,29 +1,17 @@
 var gulp = require('gulp');
-var plumber = require('plumber');
-var browserify = require('browserify');
-var rename = require('rename');
-var livereload = require('livereload');
 
-// const fs = require('fs');
-// const del = require('del');
-// const path = require('path');
-// const mkdirp = require('mkdirp');
-// const esperanto = require('esperanto');
+var browserify = require('gulp-browserify');
+var plumber = require('gulp-plumber');
+var rename = require('gulp-rename');
+var livereload = require('gulp-livereload');
 
-// const manifest = require('./package.json');
-// const config = manifest.babelBoilerplateOptions;
-// const mainFile = manifest.main;
-// const destinationFolder = path.dirname(mainFile);
-// const exportFileName = path.basename(mainFile, path.extname(mainFile));
-
-// Build two versions of the library
 gulp.task('build', function(done) {
-  gulp.src('src/reactNotificationsBar.js')
+  gulp.src('src/notificationsBar.js')
     .pipe(plumber())
     .pipe(browserify({
-      debug: true,
       transform: ['babelify']
     }))
+    .pipe(rename('index.js'))
     .pipe(gulp.dest('dist'))
     .pipe(livereload());
 });
