@@ -8,7 +8,6 @@ const mkdirp = require('mkdirp');
 const babelify = require('babelify');
 const esperanto = require('esperanto');
 const browserify = require('browserify');
-const runSequence = require('run-sequence');
 const source = require('vinyl-source-stream');
 
 const manifest = require('./package.json');
@@ -27,44 +26,8 @@ gulp.task('clean-tmp', function(cb) {
   del(['tmp'], cb);
 });
 
-// Send a notification when JSHint fails,
-// so that you know your changes didn't build
-function jshintNotify(file) {
-  if (!file.jshint) { return; }
-  return file.jshint.success ? false : 'JSHint failed';
-}
-
-function jscsNotify(file) {
-  if (!file.jscs) { return; }
-  return file.jscs.success ? false : 'JSRC failed';
-}
-
-// Lint our source code
-gulp.task('lint-src', function() {
-  return gulp.src(['src/**/*.js'])
-    .pipe($.plumber())
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.notify(jshintNotify))
-    .pipe($.jscs())
-    .pipe($.notify(jscsNotify))
-    .pipe($.jshint.reporter('fail'));
-});
-
-// Lint our test code
-gulp.task('lint-test', function() {
-  return gulp.src(['test/**/*.js'])
-    .pipe($.plumber())
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.notify(jshintNotify))
-    .pipe($.jscs())
-    .pipe($.notify(jscsNotify))
-    .pipe($.jshint.reporter('fail'));
-});
-
 // Build two versions of the library
-gulp.task('build', ['lint-src', 'clean'], function(done) {
+gulp.task('build', ['clean'], function(done) {
   esperanto.bundle({
     base: 'src',
     entry: config.entryFileName,
@@ -118,16 +81,10 @@ gulp.task('browserify', function() {
     .pipe($.livereload());
 });
 
-// Ensure that linting occurs before browserify runs. This prevents
-// the build from breaking due to poorly formatted code.
-gulp.task('build-in-sequence', function(callback) {
-  runSequence(['lint-src', 'lint-test'], 'browserify', callback);
-});
-
 // Run the headless unit tests as you make changes.
 gulp.task('watch', function() {
-  gulp.watch(['src/**/*', 'test/**/*', '.jshintrc', 'test/.jshintrc'], ['test']);
+  gulp.watch(['src/**/*', '.jshintrc'], ['build']);
 });
 
 // An alias of test
-gulp.task('default', ['build-in-sequence']);
+gulp.task('default', ['build']);
