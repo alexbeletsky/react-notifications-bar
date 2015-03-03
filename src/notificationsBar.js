@@ -7,6 +7,10 @@ var NotificationsBar = React.createClass({
 		};
 	},
 
+	componentDidMount: function() {
+
+	},
+
 	render: function () {
 	}
 });
