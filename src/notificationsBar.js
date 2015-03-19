@@ -1,21 +1,21 @@
 import React from 'react';
 
 var NotificationsBar = React.createClass({
-	getInitialState: function () {
-		return {
-			notifications: []
-		};
-	},
+    getInitialState: function () {
+        return {
+            notifications: []
+        };
+    },
 
-	componentDidMount: function() {
+    componentDidMount: function() {
 
-	},
+    },
 
-	render: function () {
-		return (
-			<div></div>
-		);
-	}
+    render: function () {
+        return (
+            <div></div>
+        );
+    }
 });
 
 export default NotificationsBar;

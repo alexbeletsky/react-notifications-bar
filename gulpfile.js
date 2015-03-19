@@ -2,8 +2,8 @@ var gulp = require('gulp');
 
 var browserify = require('gulp-browserify');
 var plumber = require('gulp-plumber');
-var rename = require('gulp-rename');
-var livereload = require('gulp-livereload');
+// var rename = require('gulp-rename');
+// var livereload = require('gulp-livereload');
 var esperanto = require('gulp-esperanto');
 
 gulp.task('build', function(done) {
