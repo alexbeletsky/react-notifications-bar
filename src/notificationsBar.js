@@ -13,7 +13,7 @@ var NotificationsBar = React.createClass({
 
     render: function () {
         return (
-            <div></div>
+            <div className="notifications"></div>
         );
     }
 });
